@@ -73,7 +73,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                 ),
               ),
             ),
-        
+            24.getH(),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: List.generate(
