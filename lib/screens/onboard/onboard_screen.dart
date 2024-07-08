@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as me;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:travel_app/data/local/local_varbals.dart';
+import 'package:travel_app/data/local/local_varibals.dart';
 import 'package:travel_app/screens/auth/sign_in/sign_in_screen.dart';
 import 'package:travel_app/screens/onboard/widget/top_item.dart';
 import 'package:travel_app/screens/widget/main_button.dart';
