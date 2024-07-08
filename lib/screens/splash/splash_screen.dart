@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:travel_app/screens/onboard/onboard_screen.dart';
+import 'package:travel_app/utils/app_colors.dart';
+import 'package:travel_app/utils/app_size.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -9,7 +13,34 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 1), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return const OnboardScreen();
+          },
+        ),
+      );
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
+
+    return Scaffold(
+      backgroundColor: AppColors.c0D6EFD,
+      body: Center(
+        child: SvgPicture.asset(
+          "assets/icons/logo.svg",
+          height: 32.he,
+          width: 133.we,
+        ),
+      ),
+    );
   }
 }
