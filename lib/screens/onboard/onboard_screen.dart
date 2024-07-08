@@ -72,7 +72,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
               ),
             ),
           ),
-          24.getH(),
+          const Spacer(),
 
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -94,7 +94,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
               },
             ),
           ),
-          const Spacer(),
+          30.getH(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.we),
             child: MainButton(
