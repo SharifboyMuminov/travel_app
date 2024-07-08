@@ -45,6 +45,7 @@ class _TabBoxState extends State<TabBox> {
             ),
           ],
         ),
+
         child: Padding(
           padding: EdgeInsets.only(bottom: 30.he, top: 4.he),
           child: Row(
