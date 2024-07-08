@@ -22,19 +22,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.white,
-        leading: GlobalArrowBackButton(
-          onTab: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 20.we),
         child: Column(
           children: [
+            48.getH(),
+            Align(
+              alignment: Alignment.topLeft,
+              child: GlobalArrowBackButton(
+                onTab: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
             40.getH(),
             Text(
               "Sign up now",
