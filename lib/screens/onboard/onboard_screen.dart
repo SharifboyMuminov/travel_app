@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as me;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:travel_app/data/local/local_varbals.dart';
+import 'package:travel_app/screens/auth/sign_in/sign_in_screen.dart';
+import 'package:travel_app/screens/onboard/widget/top_item.dart';
+import 'package:travel_app/screens/widget/main_button.dart';
 import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/app_size.dart';
 import 'package:travel_app/utils/app_text_style.dart';
@@ -13,22 +17,15 @@ class OnboardScreen extends StatefulWidget {
 }
 
 class _OnboardScreenState extends State<OnboardScreen> {
+  int activeIndex = 0;
+  final PageController _pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(
-            height: 444.he,
-            child: PageView(
-              children: List.generate(3, (index) {
-                return Image.asset(
-                  "assets/images/onboarding_${index + 1}.png",
-                  fit: BoxFit.fill,
-                );
-              }),
-            ),
-          ),
+          TopItem(pageController: _pageController),
           40.getH(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 32.we),
@@ -40,13 +37,13 @@ class _OnboardScreenState extends State<OnboardScreen> {
                 ),
                 children: [
                   TextSpan(
-                    text: "It’s a big world out there go ",
+                    text: onboardingItems[activeIndex].title,
                     style: AppTextStyle.interSemiBold.copyWith(
                       fontSize: 30.sp,
                     ),
                   ),
                   TextSpan(
-                    text: "explore",
+                    text: onboardingItems[activeIndex].mainTitle,
                     style: AppTextStyle.interBold.copyWith(
                       color: AppColors.cFF7029,
                       fontSize: 30.sp,
@@ -65,9 +62,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
           ),
           9.getH(),
           Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 36.we),
+            padding: EdgeInsets.symmetric(horizontal: 36.we),
             child: Text(
-              "At Friends tours and travel, we customize reliable and trutworthy educational tours to destinations all over the world",
+              onboardingItems[activeIndex].subTitle,
               textAlign: TextAlign.center,
               style: AppTextStyle.interRegular.copyWith(
                 fontSize: 16.sp,
@@ -75,9 +72,70 @@ class _OnboardScreenState extends State<OnboardScreen> {
               ),
             ),
           ),
+          24.getH(),
+
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(
+              onboardingItems.length,
+              (index) {
+                return AnimatedContainer(
+                  margin: EdgeInsets.symmetric(horizontal: 2.we),
+                  duration: const Duration(milliseconds: 300),
+                  width: getWidth(index),
+                  height: 7.he,
+                  decoration: BoxDecoration(
+                    color: activeIndex == index
+                        ? AppColors.c0D6EFD
+                        : AppColors.cCAEAFF,
+                    borderRadius: BorderRadius.circular(16.r),
+                  ),
+                );
+              },
+            ),
+          ),
+          const Spacer(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.we),
+            child: MainButton(
+              title: "Next",
+              onTab: () {
+                if (activeIndex != onboardingItems.length - 1) {
+                  _pageController.nextPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.linear,
+                  );
+                  activeIndex++;
+                  setState(() {});
+                } else {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const SignInScreen();
+                      },
+                    ),
+                  );
+                }
+              },
+            ),
+          ),
+          22.getH(),
         ],
       ),
     );
+  }
+
+  double getWidth(int index) {
+    if (index == activeIndex) {
+      return 35.we;
+    }
+
+    if ((index + 1) == activeIndex || (index - 1) == activeIndex) {
+      return 6.we;
+    }
+
+    return 13.we;
   }
 }
 
