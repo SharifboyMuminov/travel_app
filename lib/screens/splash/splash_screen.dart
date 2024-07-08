@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:travel_app/screens/onboard/onboard_screen.dart';
+import 'package:travel_app/screens/tab_box/tab_box.dart';
 import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/app_size.dart';
 
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return const OnboardScreen();
+            return const TabBox();
           },
         ),
       );
