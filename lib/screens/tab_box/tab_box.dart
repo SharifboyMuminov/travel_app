@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:travel_app/screens/tab_box/home/home_screen.dart';
+import 'package:travel_app/screens/tab_box/messages/messages_screen.dart';
+import 'package:travel_app/screens/tab_box/profile/profile_screen.dart';
+import 'package:travel_app/screens/tab_box/schedule/schedule_screen.dart';
 import 'package:travel_app/screens/tab_box/widget/tab_box_item.dart';
 import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/app_size.dart';
@@ -13,9 +17,22 @@ class TabBox extends StatefulWidget {
 }
 
 class _TabBoxState extends State<TabBox> {
+  final List<Widget> _screens = const [
+    HomeScreen(),
+    ScheduleScreen(),
+    MessagesScreen(),
+    ProfileScreen(),
+  ];
+
+  int _activeScreen = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: IndexedStack(
+        index: _activeScreen,
+        children: _screens,
+      ),
       bottomNavigationBar: DecoratedBox(
         decoration: BoxDecoration(
           color: AppColors.white,
@@ -35,14 +52,20 @@ class _TabBoxState extends State<TabBox> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               TabBoxItem(
-                onTab: () {},
+                onTab: () {
+                  _onItemTapped(0);
+                },
                 title: 'Home',
                 iconPath: "assets/icons/home.svg",
+                isActive: _activeScreen == 0,
               ),
               TabBoxItem(
-                onTab: () {},
+                onTab: () {
+                  _onItemTapped(1);
+                },
                 title: 'calendar',
                 iconPath: "assets/icons/calendar.svg",
+                isActive: _activeScreen == 1,
               ),
               SizedBox(
                 width: 50.we,
@@ -68,25 +91,41 @@ class _TabBoxState extends State<TabBox> {
                       ],
                     ),
                     child: Expanded(
-                      child: SvgPicture.asset("assets/icons/search.svg"),
+                      child: SvgPicture.asset(
+                        "assets/icons/search.svg",
+                        width: 24.we,
+                        height: 24.we,
+                      ),
                     ),
                   ),
                 ),
               ),
               TabBoxItem(
-                onTab: () {},
+                onTab: () {
+                  _onItemTapped(3);
+                },
                 title: 'Messages',
                 iconPath: "assets/icons/messages.svg",
+                isActive: _activeScreen == 3,
               ),
               TabBoxItem(
-                onTab: () {},
+                onTab: () {
+                  _onItemTapped(4);
+                },
                 title: 'Profile',
                 iconPath: "assets/icons/profile.svg",
+                isActive: _activeScreen == 4,
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _activeScreen = index;
+    });
   }
 }

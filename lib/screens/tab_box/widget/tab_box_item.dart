@@ -11,11 +11,13 @@ class TabBoxItem extends StatelessWidget {
     required this.onTab,
     required this.title,
     required this.iconPath,
+    required this.isActive,
   });
 
   final VoidCallback onTab;
   final String title;
   final String iconPath;
+  final bool isActive;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +35,16 @@ class TabBoxItem extends StatelessWidget {
             iconPath,
             width: 24.we,
             height: 24.we,
+            colorFilter: ColorFilter.mode(
+                isActive ? AppColors.c0D6EFD : AppColors.c7D848D,
+                BlendMode.srcIn),
           ),
           4.getH(),
           Text(
             title,
             style: AppTextStyle.interRegular.copyWith(
               fontSize: 12.sp,
-              color: AppColors.c7D848D,
+              color: isActive ? AppColors.c0D6EFD : AppColors.c7D848D,
             ),
           ),
         ],
