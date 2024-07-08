@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:travel_app/screens/auth/forget_password/forget_password_screen.dart';
 import 'package:travel_app/screens/auth/sign_up/sign_up_screen.dart';
-import 'package:travel_app/screens/auth/verification/verification_screen.dart';
 import 'package:travel_app/screens/auth/widget/auth_input.dart';
 import 'package:travel_app/screens/tab_box/tab_box.dart';
 import 'package:travel_app/screens/widget/main_button.dart';
@@ -71,7 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return const VerificationScreen();
+                        return const ForgetPasswordScreen();
                       },
                     ),
                   );
