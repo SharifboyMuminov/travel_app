@@ -74,48 +74,64 @@ class MyDatePickerState extends State<MyDatePicker> {
               ],
             ),
             12.getH(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(7, (index) {
-                DateTime date = DateTime.now().subtract(
-                    Duration(days: DateTime.now().weekday - index - 1));
-                bool isSelected = date.day == selectedDate.day;
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(
+                  7,
+                  (index) {
+                    DateTime date = DateTime.now().subtract(
+                        Duration(days: DateTime.now().weekday - index - 1));
+                    bool isSelected = date.day == selectedDate.day;
 
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedDate = date;
-                      widget.onChangedDateTime.call(selectedDate);
-                    });
-                  },
-                  child: Column(
-                    children: [
-                      Text(
-                        _dayName(date.weekday),
-                        style: TextStyle(
-                          color: isSelected ? Colors.blue : Colors.grey,
-                        ),
-                      ),
-                      4.getH(),
-                      DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: isSelected ? Colors.blue : Colors.transparent,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            date.day.toString(),
-                            style: TextStyle(
-                              color: isSelected ? Colors.white : Colors.black,
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 6.we),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedDate = date;
+                            widget.onChangedDateTime.call(selectedDate);
+                          });
+                        },
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color:
+                                isSelected ? Colors.blue : Colors.transparent,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(12.we),
+                            child: Column(
+                              children: [
+                                Text(
+                                  _dayName(date.weekday),
+                                  style: AppTextStyle.interRegular.copyWith(
+                                    fontSize: 15.sp,
+                                    color: isSelected
+                                        ? AppColors.c7D848D
+                                        : AppColors.cD0D9E7,
+                                  ),
+                                ),
+                                4.getH(),
+                                Text(
+                                  date.day.toString(),
+                                  style: AppTextStyle.interSemiBold.copyWith(
+                                    fontSize: 16.sp,
+                                    color: isSelected
+                                        ? AppColors.white
+                                        : AppColors.c1B1E28,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                );
-              }),
+                    );
+                  },
+                ),
+              ),
             ),
             16.getH(),
           ],
