@@ -7,22 +7,32 @@ class GlobalArrowBackButton extends StatelessWidget {
   const GlobalArrowBackButton({
     super.key,
     required this.onTab,
+    this.iconPath = "arrow_back.svg",
+    this.backgroundColor,
+    this.iconColor,
   });
 
   final VoidCallback onTab;
+  final String iconPath;
+  final Color? backgroundColor;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       style: IconButton.styleFrom(
-        backgroundColor: AppColors.cF7F7F9,
+        backgroundColor: backgroundColor ?? AppColors.cF7F7F9,
         padding: EdgeInsets.all(10.we),
       ),
       onPressed: onTab,
       icon: SvgPicture.asset(
-        "assets/icons/arrow_back.svg",
+        "assets/icons/$iconPath",
         width: 24.we,
         height: 24.we,
+        colorFilter: ColorFilter.mode(
+          iconColor ?? AppColors.c1B1E28,
+          BlendMode.srcIn,
+        ),
       ),
     );
   }

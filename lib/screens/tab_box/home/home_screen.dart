@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:travel_app/screens/tab_box/home/details_screen.dart';
 import 'package:travel_app/screens/tab_box/home/widget/product_item.dart';
 import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/app_size.dart';
@@ -119,7 +120,16 @@ class HomeScreen extends StatelessWidget {
                       children: List.generate(
                         10,
                         (index) {
-                          return ProductItem(onTab: () {});
+                          return ProductItem(onTab: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const DetailsScreen();
+                                },
+                              ),
+                            );
+                          });
                         },
                       ),
                     ),
