@@ -39,6 +39,7 @@ class DetailsScreen extends StatelessWidget {
                 child: SingleChildScrollView(
                   padding: EdgeInsets.symmetric(horizontal: 20.we),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       16.getH(),
                       DecoratedBox(
@@ -155,6 +156,66 @@ class DetailsScreen extends StatelessWidget {
                             ),
                           ),
                         ],
+                      ),
+                      24.getH(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: List.generate(
+                          5,
+                          (index) {
+                            if (index == 4) {
+                              return Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Image.asset(
+                                    "assets/images/details_image_${index + 1}.png",
+                                    width: 42.we,
+                                    height: 42.we,
+                                  ),
+                                  DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      color: AppColors.black.withOpacity(0.2),
+                                      borderRadius: BorderRadius.circular(12.r),
+                                    ),
+                                    child: SizedBox(
+                                      width: 42.we,
+                                      height: 42.we,
+                                    ),
+                                  ),
+                                  Text(
+                                    "+16",
+                                    style: AppTextStyle.interRegular.copyWith(
+                                      fontSize: 14.sp,
+                                      color: AppColors.white,
+                                    ),
+                                  ),
+                                ],
+                              );
+                            }
+
+                            return Image.asset(
+                              "assets/images/details_image_${index + 1}.png",
+                              width: 42.we,
+                              height: 42.we,
+                            );
+                          },
+                        ),
+                      ),
+                      24.getH(),
+                      Text(
+                        "About Destination",
+                        style: AppTextStyle.interSemiBold.copyWith(
+                          fontSize: 20.sp,
+                          color: AppColors.c1B1E28,
+                        ),
+                      ),
+                      8.getH(),
+                      Text(
+                        "You will get a complete travel package on the beaches. Packages in the form of airline tickets, recommended Hotel rooms, Transportation, Have you ever been on holiday to the Greek ETC...",
+                        style: AppTextStyle.interRegular.copyWith(
+                          fontSize: 13.sp,
+                          color: AppColors.c7D848D,
+                        ),
                       ),
                     ],
                   ),
