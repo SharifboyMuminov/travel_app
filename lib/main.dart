@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:travel_app/screens/record_home.dart';
 import 'package:travel_app/screens/splash/splash_screen.dart';
+import 'package:travel_app/screens/test.dart';
 import 'package:travel_app/utils/app_colors.dart';
 
 void main(List<String> args) async {
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const SplashScreen(),
+      child:  RecorderHomeView(title: 'Helllo worlddd',),
     );
   }
 }
