@@ -86,6 +86,57 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                       ),
                     ],
                   ),
+                  16.getH(),
+                  DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.cB4BCC9.withOpacity(0.12),
+                          blurRadius: 16,
+                          spreadRadius: 0,
+                          offset: const Offset(0, 6),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          "assets/images/img_4.png",
+                          width: 80.we,
+                          height: 80.we,
+                          fit: BoxFit.cover,
+                        ),
+                        16.getW(),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "26 January 2022",
+                              style: AppTextStyle.interRegular.copyWith(
+                                fontSize: 13.sp,
+                                color: AppColors.c7D848D,
+                              ),
+                            ),
+                            Text(
+                              "Niladri Reservoir",
+                              style: AppTextStyle.interMedium.copyWith(
+                                fontSize: 16.sp,
+                                color: AppColors.c1B1E28,
+                              ),
+                            ),
+                            Text(
+                              "Tekergat, Sunamgnj",
+                              style: AppTextStyle.interRegular.copyWith(
+                                fontSize: 13.sp,
+                                color: AppColors.c7D848D,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
