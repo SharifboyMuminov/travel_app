@@ -8,9 +8,10 @@ import 'package:flutter_audio_recorder2/flutter_audio_recorder2.dart';
 class RecorderView extends StatefulWidget {
   final Function onSaved;
 
-  const RecorderView({Key? key, required this.onSaved}) : super(key: key);
+  const RecorderView({super.key, required this.onSaved});
+
   @override
-  _RecorderViewState createState() => _RecorderViewState();
+  RecorderViewState createState() => RecorderViewState();
 }
 
 enum RecordingState {
@@ -20,7 +21,7 @@ enum RecordingState {
   Stopped,
 }
 
-class _RecorderViewState extends State<RecorderView> {
+class RecorderViewState extends State<RecorderView> {
   IconData _recordIcon = Icons.mic_none;
   String _recordText = 'Click To Start';
   RecordingState _recordingState = RecordingState.UnSet;
@@ -39,12 +40,6 @@ class _RecorderViewState extends State<RecorderView> {
         _recordText = 'Record';
       }
     });
-  }
-
-  @override
-  void dispose() {
-    _recordingState = RecordingState.UnSet;
-    super.dispose();
   }
 
   @override
@@ -108,10 +103,8 @@ class _RecorderViewState extends State<RecorderView> {
 
   _initRecorder() async {
     Directory appDirectory = await getApplicationDocumentsDirectory();
-    String filePath = appDirectory.path +
-        '/' +
-        DateTime.now().millisecondsSinceEpoch.toString() +
-        '.aac';
+    String filePath =
+        '${appDirectory.path}/${DateTime.now().millisecondsSinceEpoch}.aac';
 
     audioRecorder =
         FlutterAudioRecorder2(filePath, audioFormat: AudioFormat.AAC);
@@ -144,5 +137,11 @@ class _RecorderViewState extends State<RecorderView> {
         content: Text('Please allow recording from settings.'),
       ));
     }
+  }
+
+  @override
+  void dispose() {
+    _recordingState = RecordingState.UnSet;
+    super.dispose();
   }
 }

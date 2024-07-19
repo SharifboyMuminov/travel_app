@@ -4,19 +4,16 @@ import 'package:path_provider/path_provider.dart';
 import 'package:travel_app/record_list_view.dart';
 import 'package:travel_app/screens/test.dart';
 
-
 class RecorderHomeView extends StatefulWidget {
   final String _title;
 
-  const RecorderHomeView({Key? key, required String title})
-      : _title = title,
-        super(key: key);
+  const RecorderHomeView({super.key, required String title}) : _title = title;
 
   @override
-  _RecorderHomeViewState createState() => _RecorderHomeViewState();
+  RecorderHomeViewState createState() => RecorderHomeViewState();
 }
 
-class _RecorderHomeViewState extends State<RecorderHomeView> {
+class RecorderHomeViewState extends State<RecorderHomeView> {
   late Directory appDirectory;
   List<String> records = [];
 
@@ -69,7 +66,7 @@ class _RecorderHomeViewState extends State<RecorderHomeView> {
     records.clear();
     appDirectory.list().listen((onData) {
       if (onData.path.contains('.aac')) records.add(onData.path);
-      print(onData.path);
+      debugPrint(onData.path);
     }).onDone(() {
       records.sort();
       records = records.reversed.toList();
