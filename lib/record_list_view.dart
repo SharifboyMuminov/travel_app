@@ -90,6 +90,8 @@ class _RecordListViewState extends State<RecordListView> {
     if (filePath != null) {
       try {
         await _player.startPlayer(fromURI: filePath!);
+        Map<String, Duration> dur =  await _player.getProgress();
+        print(dur.values.first.toString() + "Value----");
         setState(() {
           _isPlaying = true;
         });
